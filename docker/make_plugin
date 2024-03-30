@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# script to make plugin for job waitime prediction
+# It only works after make_slurm_rpms (!!!!!)
+cd
+echo "Build waittime prediction plugin .so"
+
+gcc --shared -I /root/rpmbuild/BUILD/slurm-*  /root/plugin/plugin.c  /root/plugin/utils.c -lcurl -o job_submit_predict.so -fPIC
+
+mkdir -p /RPMS
+cp  job_submit_predict.so /RPMS
+
+echo "DONE"

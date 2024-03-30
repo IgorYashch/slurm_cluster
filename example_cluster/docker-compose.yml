@@ -1,0 +1,94 @@
+services:
+  headnode:
+    image: slurm_head_node
+    #image: nsimakov/slurm_compute_node:dev
+    hostname: headnode
+    shm_size: 64M
+    command: ["sshd", "munged", "mysqld", "/opt/cluster/vctools/add_system_users.sh", "/opt/cluster/vctools/start_head_node.sh", "-loop"]
+    # "/opt/cluster/vctools/start_head_node.sh" is intentionally removed here
+    # run_vc.sh will start slurm services in right order and will track time
+    networks:
+      network1:
+        ipv4_address: 172.32.0.11
+    volumes:
+      - './results:/root/results'
+      - './etc:/etc/slurm'
+      - './vctools:/opt/cluster/vctools'
+      - './job_traces:/opt/cluster/job_traces'
+      - './log:/var/log/slurm'
+      - './home:/home'
+      - './../../slurm_sim_tools:/opt/cluster/slurm_sim_tools'
+      - './../server:/opt/server'
+    cpuset: '0-3'
+    ports:
+      - "8888:8888"
+
+  n1:
+    image: slurm_compute_node
+    hostname: n1
+    command: ["sshd", "munged", "/opt/cluster/vctools/start_compute_node.sh", "-loop"]
+    networks:
+      network1:
+        ipv4_address: 172.32.1.101
+    volumes:
+      - './results:/root/results'
+      - './etc:/etc/slurm'
+      - './vctools:/opt/cluster/vctools'
+      - './job_traces:/opt/cluster/job_traces'
+      - './compute_nodes_log/n1:/var/log/slurm'
+      - './home:/home'
+    cpuset: '4-5'
+
+  n2:
+    image: slurm_compute_node
+    hostname: n2
+    command: ["sshd", "munged", "/opt/cluster/vctools/start_compute_node.sh", "-loop"]
+    networks:
+      network1:
+        ipv4_address: 172.32.1.102
+    volumes:
+      - './results:/root/results'
+      - './etc:/etc/slurm'
+      - './vctools:/opt/cluster/vctools'
+      - './job_traces:/opt/cluster/job_traces'
+      - './compute_nodes_log/n2:/var/log/slurm'
+      - './home:/home'
+    cpuset: '4-5'
+  n3:
+    image: slurm_compute_node
+    hostname: n3
+    command: ["sshd", "munged", "/opt/cluster/vctools/start_compute_node.sh", "-loop"]
+    networks:
+      network1:
+        ipv4_address: 172.32.1.103
+    volumes:
+      - './results:/root/results'
+      - './etc:/etc/slurm'
+      - './vctools:/opt/cluster/vctools'
+      - './job_traces:/opt/cluster/job_traces'
+      - './compute_nodes_log/n3:/var/log/slurm'
+      - './home:/home'
+    cpuset: '6-7'
+  n4:
+    image: slurm_compute_node
+    hostname: n4
+    command: ["sshd", "munged", "/opt/cluster/vctools/start_compute_node.sh", "-loop"]
+    networks:
+      network1:
+        ipv4_address: 172.32.1.104
+    volumes:
+      - './results:/root/results'
+      - './etc:/etc/slurm'
+      - './vctools:/opt/cluster/vctools'
+      - './job_traces:/opt/cluster/job_traces'
+      - './compute_nodes_log/n4:/var/log/slurm'
+      - './home:/home'
+    cpuset: '6-7'
+
+networks:
+  network1:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.32.0.0/21"

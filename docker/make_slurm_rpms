@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# script to make Slurm RPMs
+
+cd
+echo "Build realease Slurm"
+wget ${SLURM_TAR_BZ2_SOURCE:=https://download.schedmd.com/slurm/slurm-21.08.8.tar.bz2}
+
+rpmbuild -ta slurm*.tar.bz2
+mkdir -p /RPMS/aarch64
+cp -rf rpmbuild/RPMS/aarch64 /RPMS
+echo "DONE"

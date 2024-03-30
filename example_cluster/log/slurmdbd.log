@@ -1,0 +1,40 @@
+[2024-02-20T16:07:31.243] accounting_storage/as_mysql: _check_mysql_concat_is_sane: MySQL server version is: 5.5.68-MariaDB
+[2024-02-20T16:07:31.244] error: Database settings not recommended values: innodb_buffer_pool_size innodb_log_file_size innodb_lock_wait_timeout
+[2024-02-20T16:07:31.280] slurmdbd version 21.08.8 started
+[2024-02-20T16:07:42.219] dropping key time_start_end from table "micro_step_table"
+[2024-03-24T12:21:56.951] accounting_storage/as_mysql: _check_mysql_concat_is_sane: MySQL server version is: 5.5.68-MariaDB
+[2024-03-24T12:21:56.953] error: Database settings not recommended values: innodb_buffer_pool_size innodb_log_file_size innodb_lock_wait_timeout
+[2024-03-24T12:21:56.988] slurmdbd version 21.08.8 started
+[2024-03-24T12:22:07.871] dropping key time_start_end from table "micro_step_table"
+[2024-03-28T11:54:45.940] accounting_storage/as_mysql: _check_mysql_concat_is_sane: MySQL server version is: 5.5.68-MariaDB
+[2024-03-28T11:54:45.941] error: Database settings not recommended values: innodb_buffer_pool_size innodb_log_file_size innodb_lock_wait_timeout
+[2024-03-28T11:54:45.974] slurmdbd version 21.08.8 started
+[2024-03-28T11:54:56.928] dropping key time_start_end from table "micro_step_table"
+[2024-03-28T11:58:40.224] accounting_storage/as_mysql: _check_mysql_concat_is_sane: MySQL server version is: 5.5.68-MariaDB
+[2024-03-28T11:58:40.225] error: Database settings not recommended values: innodb_buffer_pool_size innodb_log_file_size innodb_lock_wait_timeout
+[2024-03-28T11:58:40.258] slurmdbd version 21.08.8 started
+[2024-03-28T11:58:51.195] dropping key time_start_end from table "micro_step_table"
+[2024-03-28T11:59:52.689] accounting_storage/as_mysql: _check_mysql_concat_is_sane: MySQL server version is: 5.5.68-MariaDB
+[2024-03-28T11:59:52.690] error: Database settings not recommended values: innodb_buffer_pool_size innodb_log_file_size innodb_lock_wait_timeout
+[2024-03-28T11:59:52.724] slurmdbd version 21.08.8 started
+[2024-03-28T12:00:03.609] dropping key time_start_end from table "micro_step_table"
+[2024-03-28T12:04:53.981] accounting_storage/as_mysql: _check_mysql_concat_is_sane: MySQL server version is: 5.5.68-MariaDB
+[2024-03-28T12:04:53.982] error: Database settings not recommended values: innodb_buffer_pool_size innodb_log_file_size innodb_lock_wait_timeout
+[2024-03-28T12:04:54.012] slurmdbd version 21.08.8 started
+[2024-03-28T12:05:04.973] dropping key time_start_end from table "micro_step_table"
+[2024-03-28T17:45:14.209] accounting_storage/as_mysql: _check_mysql_concat_is_sane: MySQL server version is: 5.5.68-MariaDB
+[2024-03-28T17:45:14.210] error: Database settings not recommended values: innodb_buffer_pool_size innodb_log_file_size innodb_lock_wait_timeout
+[2024-03-28T17:45:14.244] slurmdbd version 21.08.8 started
+[2024-03-28T17:45:25.207] dropping key time_start_end from table "micro_step_table"
+[2024-03-28T21:29:56.854] accounting_storage/as_mysql: _check_mysql_concat_is_sane: MySQL server version is: 5.5.68-MariaDB
+[2024-03-28T21:29:56.854] error: Database settings not recommended values: innodb_buffer_pool_size innodb_log_file_size innodb_lock_wait_timeout
+[2024-03-28T21:29:56.889] slurmdbd version 21.08.8 started
+[2024-03-28T21:30:07.827] dropping key time_start_end from table "micro_step_table"
+[2024-03-28T22:08:53.331] accounting_storage/as_mysql: _check_mysql_concat_is_sane: MySQL server version is: 5.5.68-MariaDB
+[2024-03-28T22:08:53.332] error: Database settings not recommended values: innodb_buffer_pool_size innodb_log_file_size innodb_lock_wait_timeout
+[2024-03-28T22:08:53.367] slurmdbd version 21.08.8 started
+[2024-03-28T22:09:04.327] dropping key time_start_end from table "micro_step_table"
+[2024-03-28T22:12:22.101] accounting_storage/as_mysql: _check_mysql_concat_is_sane: MySQL server version is: 5.5.68-MariaDB
+[2024-03-28T22:12:22.101] error: Database settings not recommended values: innodb_buffer_pool_size innodb_log_file_size innodb_lock_wait_timeout
+[2024-03-28T22:12:22.136] slurmdbd version 21.08.8 started
+[2024-03-28T22:12:33.108] dropping key time_start_end from table "micro_step_table"
