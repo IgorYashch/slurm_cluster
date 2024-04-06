@@ -54,7 +54,7 @@ RUN yum update --assumeno || true && \
 
 
 RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install jupyter jupyterlab numpy Flask torch scikit-learn xgboost PyMySQL
+    python3 -m pip install jupyter jupyterlab numpy Flask torch scikit-learn xgboost PyMySQL pandas
 
 
 EXPOSE 6819
