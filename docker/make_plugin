@@ -4,7 +4,7 @@
 cd
 echo "Build waittime prediction plugin .so"
 
-gcc --shared -I /root/rpmbuild/BUILD/slurm-*  /root/plugin/plugin.c  /root/plugin/utils.c -lcurl -o job_submit_predict.so -fPIC
+gcc --shared -I /root/rpmbuild/BUILD/slurm-21.08.8  /root/plugin/plugin.c  /root/plugin/utils.c -lcurl -o job_submit_predict.so -fPIC
 
 mkdir -p /RPMS
 cp  job_submit_predict.so /RPMS

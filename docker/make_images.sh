@@ -14,13 +14,12 @@ cd "${CLUSTER_MAIN_DIR}"
 rm -rf "${CLUSTER_MAIN_DIR}/docker/RPMS/*"
 
 # make image for building slurm binaries
-# docker build -t slurm_rpm_maker -f ./docker/MakeSlurmRPM.Dockerfile .
+docker build -t slurm_rpm_maker -f ./docker/MakeSlurmRPM.Dockerfile .
 
-
-# docker run --name slurm_rpm_maker -h slurm_rpm_maker \
-#            -v `pwd`/docker/RPMS:/RPMS:Z \
-#            --rm \
-#            -it slurm_rpm_maker
+docker run --name slurm_rpm_maker -h slurm_rpm_maker \
+           -v `pwd`/docker/RPMS:/RPMS:Z \
+           --rm \
+           -it slurm_rpm_maker
 
 # Build Common Image
 docker build -f docker/Common.Dockerfile -t slurm_common .

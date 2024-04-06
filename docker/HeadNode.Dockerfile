@@ -13,11 +13,6 @@ RUN yum update --assumeno || true && \
     yum clean all && \
     rm -rf /var/cache/yum
 
-# COPY ./docker/install_python.sh /root/
-# RUN /root/install_python.sh
-# RUN python3 --version
-
-
 #configure mysqld
 RUN chmod g+rw /var/lib/mysql /var/log/mariadb /var/run/mariadb && \
     mysql_install_db && \
@@ -59,7 +54,7 @@ RUN yum update --assumeno || true && \
 
 
 RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install jupyter jupyterlab numpy Flask torch scikit-learn catboost PyMySQL
+    python3 -m pip install jupyter jupyterlab numpy Flask torch scikit-learn xgboost PyMySQL
 
 
 EXPOSE 6819

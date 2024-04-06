@@ -136,6 +136,10 @@ do
         start_process_w_confirm slurmd /usr/sbin/slurmd ${SLURMD_PID} \
             ${SLURMD_LOG} started root
         ;;
+    jupyter)
+        echo "Launching Jupyter Lab"
+        jupyter lab --no-browser --ip=0.0.0.0 --port=8888 --allow-root &
+        ;;
     self_contained_slurm_wlm)
         cmd_start munged sshd mysqld slurmdbd slurmctld slurmd
         ;;
