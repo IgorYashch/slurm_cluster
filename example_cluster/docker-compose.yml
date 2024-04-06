@@ -4,9 +4,7 @@ services:
     #image: nsimakov/slurm_compute_node:dev
     hostname: headnode
     shm_size: 64M
-    command: ["sshd", "munged", "mysqld", "/opt/cluster/vctools/add_system_users.sh", "/opt/cluster/vctools/start_head_node.sh", "-loop"]
-    # "/opt/cluster/vctools/start_head_node.sh" is intentionally removed here
-    # run_vc.sh will start slurm services in right order and will track time
+    command: ["sshd", "munged", "mysqld", "/opt/cluster/vctools/add_system_users.sh", "/opt/cluster/vctools/start_head_node.sh", "jupyter", "-loop"]
     networks:
       network1:
         ipv4_address: 172.32.0.11
@@ -18,7 +16,8 @@ services:
       - './log:/var/log/slurm'
       - './home:/home'
       - './../../slurm_sim_tools:/opt/cluster/slurm_sim_tools'
-      - './../server:/opt/server'
+      - './../server:/root/server'
+      - './../tasks:/root/tasks'
     cpuset: '0-3'
     ports:
       - "8888:8888"
