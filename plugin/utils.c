@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 
-char* description_to_json(struct job_descriptor *job) {
+char* description_to_json(job_desc_msg_t *job) {
     char *json = malloc(2048 * sizeof(char));
 
     sprintf(json,
