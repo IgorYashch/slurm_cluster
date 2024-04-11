@@ -56,12 +56,15 @@ RUN yum update --assumeno || true && \
 RUN python3 -m pip install --upgrade pip && \
     python3 -m pip install jupyter jupyterlab numpy Flask torch scikit-learn xgboost PyMySQL pandas
 
+RUN jupyter lab --generate-config && \
+    echo "c.NotebookApp.password = u'$(echo "from IPython.lib import passwd; print(passwd(passphrase='slurm', algorithm='sha1'))" | python3 -c "import IPython; exec(input())")'" >> ~/.jupyter/jupyter_lab_config.py
 
 EXPOSE 6819
 EXPOSE 6817
 EXPOSE 8888
 
 COPY ./docker/RPMS/job_submit_predict.so /usr/lib64/slurm
+COPY ./docker/RPMS/BUILD /root/slurm
 COPY ../server /opt/cluster/server
 
 # setup entry point
