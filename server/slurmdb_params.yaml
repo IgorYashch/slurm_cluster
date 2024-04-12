@@ -1,0 +1,5 @@
+host: localhost
+user: slurm
+password: slurm
+database: slurmdb_micro3
+cluster_prefix: micro

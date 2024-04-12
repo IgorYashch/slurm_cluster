@@ -1,3 +1,3 @@
-Еще ребует доработки
-
-Для BSC симулятора нужно добавить строку ```python /home/slurm/workdir/server/server.py $sim_path/slurm_varios/log/jobcomp.log```
+Заметки:
+1. Остановить сервер можно командой 
+    > kill -9 `lsof -i:4567 -t`

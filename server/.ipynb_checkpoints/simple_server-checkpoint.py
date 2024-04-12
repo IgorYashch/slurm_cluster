@@ -14,6 +14,3 @@ def handle_job_submit():
         'message': 'Job description received successfully.'
     }
     return jsonify(response), 200
-
-if __name__ == "__main__":
-    app.run(port=4567)
