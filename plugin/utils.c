@@ -8,7 +8,9 @@ char* description_to_json(job_desc_msg_t *job) {
 
     sprintf(json,
         "{\n"
+        "  \"job_id\": %u,\n"
         "  \"cpus_per_task\": %hu,\n"
+        "  \"time_limit\": %u,\n"
         "  \"min_cpus\": %u,\n"
         "  \"max_cpus\": %u,\n"
         "  \"min_nodes\": %u,\n"
@@ -28,7 +30,9 @@ char* description_to_json(job_desc_msg_t *job) {
         "  \"req_switch\": %u,\n"
         "  \"wait4switch\": %u\n"
         "}",
+        job->job_id,
         job->cpus_per_task,
+        job->time_limit,
         job->min_cpus,
         job->max_cpus,
         job->min_nodes,

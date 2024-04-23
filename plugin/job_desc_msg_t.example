@@ -14,7 +14,7 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 	uint32_t argc;		/* number of arguments to the script */
 	char **argv;		/* arguments to the script */
 	char *array_inx;	/* job array index values */
-	bitstr_t *array_bitmap;	/* NOTE: Set by slurmctld */
+	void *array_bitmap;	/* NOTE: Set by slurmctld */
 	char *batch_features;	/* features required for batch script's node */
 	time_t begin_time;	/* delay initiation until this time */
 	uint64_t bitflags;      /* bitflags */
@@ -26,7 +26,6 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 	uint16_t contiguous;	/* 1 if job requires contiguous nodes,
 				 * 0 otherwise,default=0 */
 	char *container;	/* OCI container bundle */
-	char *container_id;	/* OCI container ID */
 	uint16_t core_spec;	/* specialized core/thread count,
 				 * see CORE_SPEC_THREAD */
 	char *cpu_bind;		/* binding map for map/mask_cpu - This
@@ -50,11 +49,10 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 				 * scheduling in the future */
 	char **environment;	/* environment variables to set for job,
 				 *  name=value pairs, one per line */
-	slurm_hash_t env_hash;  /* hash value of environment NO NOT PACK */
 	uint32_t env_size;	/* element count in environment */
+	char *extra;		/* unused */
 	char *exc_nodes;	/* comma separated list of nodes excluded
 				 * from job's allocation, default NONE */
-	char *extra;		/* Arbitrary string */
 	char *features;		/* required feature specification,
 				 * default NONE */
 	uint64_t fed_siblings_active; /* Bitmap of active fed sibling ids */
@@ -65,12 +63,9 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 				 * 0 if to be queued awaiting resources */
 	uint32_t job_id;	/* job ID, default set by Slurm */
 	char * job_id_str;      /* string representation of the jobid */
-	char *job_size_str;
 	uint16_t kill_on_node_fail; /* 1 if node failure to kill job,
 				     * 0 otherwise,default=1 */
 	char *licenses;		/* licenses required by the job */
-	char *licenses_tot;	/* total licenses required by the job included
-				 * from tres requests as well, NOT PACKED */
 	uint16_t mail_type;	/* see MAIL_JOB_ definitions above */
 	char *mail_user;	/* user to receive notification */
 	char *mcs_label;	/* mcs_label if mcs plugin in use */
@@ -94,8 +89,6 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 				   SLURM_DIST_PLANE */
 	uint8_t power_flags;	/* power management flags,
 				 * see SLURM_POWER_FLAGS_ */
-	char *prefer;		/* soft feature specification,
-				 * default NONE */
 	uint32_t priority;	/* relative priority of the job,
 				 * explicitly set only for user root,
 				 * 0 == held (don't initiate) */
@@ -110,7 +103,6 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 	char *reservation;	/* name of reservation to use */
 	char *script;		/* the actual job script, default NONE */
 	void *script_buf;	/* job script as mmap buf */
-	slurm_hash_t script_hash; /* hash value of script NO NOT PACK */
 	uint16_t shared;	/* 2 if the job can only share nodes with other
 				 *   jobs owned by that user,
 				 * 1 if job can share nodes with other jobs,
@@ -145,8 +137,6 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 	uint16_t warn_time;	/* time before end to send signal (seconds) */
 	char *work_dir;		/* pathname of working directory */
 
-
-
 	/* job constraints: */
 	uint16_t cpus_per_task;	/* number of processors required for
 				 * each task */
@@ -177,6 +167,8 @@ typedef struct job_descriptor {	/* For submit, allocate, and update requests */
 				  * default=0 */
 	char *req_context;	/* requested selinux context */
 	uint32_t req_switch;    /* Minimum number of switches */
+	dynamic_plugin_data_t *select_jobinfo; /* opaque data type,
+					   * Slurm internal use only */
 	char *selinux_context;	/* used internally in the slurmctld,
 				   DON'T PACK */
 	char *std_err;		/* pathname of stderr */
