@@ -1,7 +1,7 @@
 import argparse
 import yaml
-from .simple_server import app as simple_server_app
-from .logging_server2 import LoggingServer
+# from .server_simple import app as SimpleServer
+from .server_logging import LoggingServer
 
 parser = argparse.ArgumentParser(description='Launch the server with the specified mode.')
 parser.add_argument('--port', type=int, help='Port on which the server is running', default=4567)
@@ -18,10 +18,10 @@ parser_logging.add_argument('--log_file', type=str, help='File for logging', req
 args = parser.parse_args()
 
 if __name__ == "__main__":
-    if args.mode == 'simple':
-        app = simple_server_app
+    # if args.mode == 'simple':
+    #     app = simple_server_app
 
-    elif args.mode == 'logging':
+    if args.mode == 'logging':
         with open(args.slurmdb_config, 'r') as file:
             slurm_db_params = yaml.safe_load(file)
 
