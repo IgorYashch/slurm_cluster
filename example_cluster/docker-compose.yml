@@ -18,6 +18,7 @@ services:
       - './../../slurm_sim_tools:/opt/cluster/slurm_sim_tools'
       - './../server:/root/server'
       - './../tasks:/root/tasks'
+      - './../plugin:/root/plugin'
     cpuset: '0-3'
     ports:
       - "8888:8888"
