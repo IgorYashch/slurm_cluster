@@ -9,7 +9,7 @@ RUN yum update --assumeno || true && \
     yum -y install --setopt=tsflags=nodocs \
         vim tmux mc perl-Switch \
         iproute perl-Date* \
-        mariadb-server mariadb-devel gcc curl-devel  python3 python3-devel sqlite-devel default-libmysqlclient-dev build-essential pkg-config && \
+        mariadb-server mariadb-devel gcc gcc-c++ lsof curl-devel  python3 python3-devel sqlite-devel default-libmysqlclient-dev build-essential pkg-config && \
     yum clean all && \
     rm -rf /var/cache/yum
 
@@ -54,7 +54,7 @@ RUN yum update --assumeno || true && \
 
 
 RUN python3 -m pip install --upgrade pip && \
-    python3 -m pip install jupyter jupyterlab numpy Flask torch scikit-learn xgboost PyMySQL pandas
+    python3 -m pip install jupyter jupyterlab numpy Flask torch scikit-learn xgboost PyMySQL pandas pyyaml
 
 RUN jupyter lab --generate-config && \
     echo "c.NotebookApp.password = u'$(echo "from IPython.lib import passwd; print(passwd(passphrase='slurm', algorithm='sha1'))" | python3 -c "import IPython; exec(input())")'" >> ~/.jupyter/jupyter_lab_config.py
