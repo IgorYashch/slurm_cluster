@@ -17,8 +17,8 @@ CURRENT_TASK_FACTORS = [
 ]
 
 
-class LoggingServer:
-    def __init__(self, csv_file, database_params):
+class PredictionServer:
+    def __init__(self, model, csv_file, database_params):
         self.slurm_db = SlurmDataBase(**database_params)
         self.csv_file = csv_file
         self.first_record = True
