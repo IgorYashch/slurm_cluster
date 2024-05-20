@@ -2,4 +2,13 @@
 *\.ipython
 *.pyc
 *.pyo
+*.so
+*/tmp/*
+*/data/*
+*/RPMS
+*/home
+*/log
+*/compute_nodes_log
+*/results
+*/.DS_Store
 *__pycache__
