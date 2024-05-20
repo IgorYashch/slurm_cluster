@@ -67,6 +67,8 @@ COPY ./docker/RPMS/job_submit_predict.so /usr/lib64/slurm
 COPY ./docker/RPMS/BUILD /root/slurm
 COPY ../server /opt/cluster/server
 
+RUN python3 -m pip install matplotlib seaborn
+
 # setup entry point
 ENTRYPOINT ["/usr/local/sbin/cmd_start"]
 CMD ["-loop", "/opt/cluster/vctools/init_system", "munged", "mysqld", "slurmdbd", "slurmctld", "sshd", "/opt/cluster/vctools/init_slurm", "bash"]
