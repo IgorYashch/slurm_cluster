@@ -1,10 +1,13 @@
 #include "utils.h"
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <inttypes.h>
 
 char* description_to_json(job_desc_msg_t *job) {
     char *json = malloc(2048 * sizeof(char));
+    if (!json) {
+        return NULL; // Handle memory allocation failure
+    }
 
     sprintf(json,
         "{\n"
@@ -28,7 +31,9 @@ char* description_to_json(job_desc_msg_t *job) {
         "  \"pn_min_memory\": %" PRIu64 ",\n"
         "  \"pn_min_tmp_disk\": %u,\n"
         "  \"req_switch\": %u,\n"
-        "  \"wait4switch\": %u\n"
+        "  \"wait4switch\": %u,\n"
+        "  \"job_name\": \"%s\",\n"
+        "  \"user_id\": %u\n"
         "}",
         job->job_id,
         job->cpus_per_task,
@@ -50,7 +55,9 @@ char* description_to_json(job_desc_msg_t *job) {
         job->pn_min_memory,
         job->pn_min_tmp_disk,
         job->req_switch,
-        job->wait4switch
+        job->wait4switch,
+        job->name ? job->name : "",
+        job->user_id ? job->user_id: 0
     );
 
     return json;

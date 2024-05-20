@@ -11,7 +11,7 @@ const char plugin_name[] = "Plugin for predict waittime";
 const char plugin_type[] = "job_submit/predict";
 const uint32_t plugin_version = SLURM_VERSION_NUMBER;
 
-// Callback function to receive the response from the server
+
 size_t write_callback(void *contents, size_t size, size_t nmemb, char **response)
 {
     size_t total_size = size * nmemb;
@@ -23,6 +23,7 @@ size_t write_callback(void *contents, size_t size, size_t nmemb, char **response
     }
     return total_size;
 }
+
 
 extern int job_submit(job_desc_msg_t *job_desc, uint32_t submit_uid, char **err_msg) {
     const char *predict_time_arg = "predict-time";
@@ -47,7 +48,6 @@ extern int job_submit(job_desc_msg_t *job_desc, uint32_t submit_uid, char **err_
                 if (strcmp(job_desc->comment, logging_arg) == 0) {
                     info("Logging mode: Sent message: %s\n", json_message);
                 } else if (strcmp(job_desc->comment, predict_time_arg) == 0) {
-                    // Предполагаем, что ответ сервера должен быть записан в сообщение об ошибке
                     if (response) {
                         *err_msg = strdup(response);
                         curl_slist_free_all(headers);
@@ -79,11 +79,11 @@ extern int job_modify(job_desc_msg_t *job_desc, job_record_t *job_ptr, uint32_t 
     return SLURM_SUCCESS;
 }
 
+
 extern int init(void)
 {
     info("job_submit plugin loaded");
 
-    // Initialize curl globally
     CURLcode res = curl_global_init(CURL_GLOBAL_DEFAULT);
     if (res != CURLE_OK)
     {
@@ -93,6 +93,7 @@ extern int init(void)
 
     return SLURM_SUCCESS;
 }
+
 
 extern int fini(void)
 {
